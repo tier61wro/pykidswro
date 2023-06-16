@@ -1,0 +1,51 @@
+version: '3'
+services:
+  pykids_web:
+    container_name: pykids_web
+    build: .
+    expose:
+      - 8000
+    depends_on:
+      - pykids_db
+    volumes:
+      - pykids_static_volume:/app/staticfiles
+      - .:/app
+    env_file:
+      - .env
+
+  pykids_db:
+    container_name: pykids_db
+    image: postgres:13.0-alpine
+    environment:
+      - POSTGRES_DB=pykids_database
+      - POSTGRES_PASSWORD=123qwe
+      - POSTGRES_USER=app
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/backup.sql:/docker-entrypoint-initdb.d/init.sql
+      - pykids_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  pykids_curler:
+    container_name: pykids_curler
+    build:
+      context: .
+      dockerfile: Dockerfile_curl
+
+  pykids_nginx:
+    container_name: pykids_nginx
+    image: nginx:1.19.2
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - pykids_static_volume:/app/staticfiles
+    depends_on:
+      - pykids_web
+    ports:
+      - "8000:80"
+
+volumes:
+  pykids_postgres_data:
+  pykids_static_volume:
