@@ -18,6 +18,8 @@ class DiaryEntryView(FormView):
     success_url = '/diary/entry/success/'
 
 
+from datetime import date
+
 class DiaryEntryView(FormView):
     template_name = 'diary_entry.html'
     form_class = DiaryEntryForm
@@ -27,15 +29,13 @@ class DiaryEntryView(FormView):
         initial = super().get_initial()
         date_param = self.request.GET.get('date')
         if not date_param:
-            date_param = date.today().strftime('%Y-%m-%d')
+            initial['date'] = date.today().strftime('%Y-%m-%d')
         else:
             try:
                 parsed_date = parser.parse(date_param)
-                date_param = parsed_date.strftime('%Y-%m-%d')
+                initial['date'] = parsed_date.strftime('%Y-%m-%d')
             except ValueError:
-                date_param = date.today().strftime('%Y-%m-%d')
-
-        initial['date'] = date_param
+                initial['date'] = date.today().strftime('%Y-%m-%d')
         return initial
 
     def form_valid(self, form):
@@ -43,8 +43,7 @@ class DiaryEntryView(FormView):
         return redirect(self.get_success_url())
 
     def get(self, request, *args, **kwargs):
-        date = self.request.GET.get('date')
-        form = DiaryEntryForm(initial={'date': date})
+        form = DiaryEntryForm(initial=self.get_initial())
         return render(request, 'diary_entry.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
@@ -54,7 +53,6 @@ class DiaryEntryView(FormView):
             # Обработка успешной отправки формы
             return redirect('success-url')
         return render(request, 'diary_entry.html', {'form': form})
-
 
 
 def diary_entry_success(request):

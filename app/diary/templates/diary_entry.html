@@ -5,10 +5,11 @@
 </head>
 <body>
     <h1>Заполнение отчета</h1>
-    <form method="GET" action="{% url 'diary:diary-entry-date' date=request.GET.date %}">
+    <form method="GET" action="{% url 'diary:diary-entry' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">ВВод данных</button>
+        <button type="submit">Ввод данных</button>
     </form>
 </body>
 </html>
+
