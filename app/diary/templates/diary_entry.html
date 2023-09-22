@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ввод данных</title>
-</head>
-<body>
-    <h1>Заполнение отчета</h1>
-    <form method="GET" action="{% url 'diary:diary-entry' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Ввод данных</button>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
 
+{% block content %}
+    <div class="container mt-5">
+        <h1>Заполнение отчета</h1>
+        <form method="GET" action="{% url 'diary:diary-entry' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                {{ form.date.label_tag }}
+                {{ form.date }}
+            </div>
+
+            <div class="form-group">
+                {{ form.steps.label_tag }}
+                {{ form.steps }}
+            </div>
+
+            <div class="form-group">
+                {{ form.study_hours.label_tag }}
+                {{ form.study_hours }}
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Ввод данных</button>
+        </form>
+    </div>
+{% endblock %}

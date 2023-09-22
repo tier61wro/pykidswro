@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'debug_toolbar',
-    # 'movies.apps.MoviesConfig',  # ваше приложение
+    'main.apps.MainConfig',
     'diary.apps.DiaryConfig',
     'django_extensions',
+
 
 ]
 

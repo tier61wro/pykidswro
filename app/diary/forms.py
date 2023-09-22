@@ -7,10 +7,21 @@ from django.conf import settings
 
 
 class DiaryEntryForm(forms.ModelForm):
+    # date = forms.DateField(
+    #     widget=forms.DateInput(format='%d/%m/%Y'),
+    #     input_formats=['%d/%m/%Y'],
+    #     # widget=forms.DateInput(attrs={'type': 'date', 'format': '%d/%m/%Y'})
+    # )
+
     date = forms.DateField(
-        widget=forms.DateInput(format='%d/%m/%Y'),
+        widget=forms.DateInput(format='%d/%m/%Y', attrs={'class': 'form-control'}),
         input_formats=['%d/%m/%Y'],
-        # widget=forms.DateInput(attrs={'type': 'date', 'format': '%d/%m/%Y'})
+    )
+    steps = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control'}),
+    )
+    study_hours = forms.DecimalField(
+        widget=forms.NumberInput(attrs={'class': 'form-control'}),
     )
 
     class Meta:
