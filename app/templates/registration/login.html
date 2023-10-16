@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+      <h2>Вход</h2>
+      <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Войти</button>
+      </form>
+      <p class="mt-3">Если у вас еще нет аккаунта, вы можете зарегистрироваться, написав на почту: <a href="mailto:pykids@gmail.com">pykids@gmail.com</a></p>
+  </div>
+{% endblock %}

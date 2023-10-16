@@ -1,8 +1,11 @@
 from django.urls import path
-from .views import index
+from .views import IndexView, ContactView, AboutView, CourseView
 
 app_name = 'main'
 
 urlpatterns = [
-    path('main/index/', index, name='index'),
+    path('index/', IndexView.as_view(), name='index'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('course/', CourseView.as_view(), name='course'),
+    path('contact/', ContactView.as_view(), name='contact'),
 ]

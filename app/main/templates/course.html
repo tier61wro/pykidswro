@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section id="about" class="about">
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Колонка для изображения -->
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid" alt="Описание изображения">
+                </div>
+                <!-- Колонка для текста -->
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                    <h3>План курса</h3>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> Учим программировать.</li>
+                        <li><i class="bi bi-check-circle"></i> Развиваем навык осознанности и самостоятельной работы</li>
+                        <li><i class="bi bi-check-circle"></i> Формируем полезные привычки</li>
+                    </ul>
+                    <p>
+                        Присоединяйтесь к нам и дайте вашему ребенку возможность стать частью цифрового будущего!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

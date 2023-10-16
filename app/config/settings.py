@@ -7,10 +7,17 @@ from pathlib import Path
 from dotenv import load_dotenv
 from split_settings.tools import include
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+logger.error(f"BASE_DIR is set to: {BASE_DIR}")
+logger.error(f"BASE_DIR file: {Path(__file__)}")
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -44,8 +51,6 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'diary.apps.DiaryConfig',
     'django_extensions',
-
-
 ]
 
 MIDDLEWARE = [
@@ -64,7 +69,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +82,8 @@ TEMPLATES = [
     },
 ]
 
+logger.info(f"BASE_DIR is set to: {BASE_DIR}")
+logger.info(f"TEMPLATES is set to: {TEMPLATES}")
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Password validation

@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% load static %}
-    <title>Date List</title>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <style>
-        .half-width {
-            width: 50%;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
     <div class="container half-width">
+        <br>
         <h1>Date List</h1>
         <table class="table table-striped">
             <thead>
@@ -35,5 +27,4 @@
             </tbody>
         </table>
     </div>
-</body>
-</html>
+{% endblock %}
