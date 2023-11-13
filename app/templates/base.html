@@ -29,6 +29,9 @@
 <!-- Template Main CSS File -->
 <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
+<!-- Custom static File -->
+<link href="{% static 'custom.css' %}" rel="stylesheet">
+
 </head>
 <body>
 
@@ -42,10 +45,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="{% url 'main:index' %}">Home</a></li>
-          <li><a href="{% url 'main:about' %}">About</a></li>
-          <li><a href="{% url 'main:course' %}">Course</a></li>
-          <li><a href="{% url 'main:contact' %}">Contact</a></li>
+          <li><a href="{% url 'main:index' %}">Главная</a></li>
+          <li><a href="{% url 'main:about' %}">О проекте</a></li>
+          <li><a href="{% url 'main:course' %}">Программа курса</a></li>
+          <li><a href="{% url 'main:contact' %}">Контакты</a></li>
           <li class="dropdown"><a href="#"><span>Дневник</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'diary:date-list' %}">Дневник</a></li>
@@ -55,12 +58,14 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
         <nav><!-- .navbar -->
-          {% if user.is_authenticated %}
-            <span>Привет, {{ user.username }}!</span>
-            <a href="{% url 'logout' %}" class="get-started-btn">Выйти</a>
-          {% else %}
-            <a href="{% url 'login' %}" class="get-started-btn">Войти</a>
-          {% endif %}
+          <div class="user-info">
+            {% if user.is_authenticated %}
+              <span>Привет, {{ user.username }}!</span>
+              <a href="{% url 'logout' %}" class="get-started-btn">Выйти</a>
+            {% else %}
+              <a href="{% url 'login' %}" class="get-started-btn">Войти</a>
+            {% endif %}
+          </div>
         </nav>
     </div>
   </header><!-- End Header -->
@@ -87,7 +92,7 @@
 
       <div class="container" data-aos="fade-up">
 
-        <div class="row mt-5">
+        <div class="row mt-6">
 
           <div class="col-lg-4">
             <div class="info">

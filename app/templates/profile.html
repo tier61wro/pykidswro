@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+
+  <h2 class="display-4">Профиль пользователя</h2>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Информация о пользователе:</h5>
+      <p class="card-text">Имя пользователя: {{ user.username }}</p>
+      <p class="card-text">Электронная почта: {{ user.email }}</p>
+      <!-- Добавьте любую другую информацию, которую вы хотите отобразить -->
+    </div>
+  </div>
+
+</div>
+{% endblock %}
