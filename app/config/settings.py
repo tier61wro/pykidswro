@@ -16,8 +16,8 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-logger.error(f"BASE_DIR is set to: {BASE_DIR}")
-logger.error(f"BASE_DIR file: {Path(__file__)}")
+logger.info(f"BASE_DIR is set to: {BASE_DIR}")
+logger.info(f"BASE_DIR file: {Path(__file__)}")
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -122,12 +122,35 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATIC_URL = '/static/'
 # STATIC_ROOT = '/app/staticfiles/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "../static")]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "../static")]
 
+'''
+URL, по которому будут доступны статические файлы (например, CSS, JavaScript, изображения)
+если картинка лежит тут /app/collected_static/images/myimage.jpg
+Если STATIC_URL установлен в /static/, то картинка тут URL http://<ваш домен>/static/images/myimage.jpg
+'''
+STATIC_URL = '/static/'
+
+'''
+Абсолютный путь к директории, куда будут собираться все статические файлы
+из всех приложений при выполнении команды `collectstatic`.
+Настройте ваш веб-сервер (например, Nginx) на обслуживание файлов из этой папки.
+'''
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+logger.info(f"STATICROOT is set to: {STATIC_ROOT}")
+
+'''
+Список дополнительных местоположений файловой системы, где Django будет искать статические файлы,
+помимо стандартной папки static каждого приложения.
+Это полезно для статических файлов, которые не относятся непосредственно к приложениям Django.
+'''
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
+# STATICFILES_DIRS = ["static"]
+
+logger.info(f"STATICFILES is set to: {STATICFILES_DIRS}")
+# INFO:config.settings:STATICFILES is set to: ['/app/static']
 
 # Default primary key field type
 

@@ -11,11 +11,14 @@ RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
     && pip install psycopg2
 
+# Копируем статические файлы перед запуском collectstatic
+COPY static /app/static
+
 COPY app .
 
 RUN python manage.py collectstatic --noinput
 
-COPY bootstrap-5.3.0-dist /app/staticfiles/bootstrap
+#COPY bootstrap-5.3.0-dist /app/staticfiles/bootstrap
 
 
 #CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]

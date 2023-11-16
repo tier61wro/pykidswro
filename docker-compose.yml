@@ -10,6 +10,7 @@ services:
     depends_on:
       - pykids_db
     volumes:
+      - ./static:/app/static  # Смонтировать локальную папку static в /app/static внутри контейнера
       - pykids_static_volume:/app/staticfiles
     env_file:
       - .env

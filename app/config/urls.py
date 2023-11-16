@@ -7,6 +7,7 @@ from django.urls import include
 from main.views import ProfileView
 
 urlpatterns = [
+    path('', include('main.urls')),
     path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
     path('diary/', include('diary.urls')),
