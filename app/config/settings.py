@@ -137,7 +137,10 @@ STATIC_URL = '/static/'
 из всех приложений при выполнении команды `collectstatic`.
 Настройте ваш веб-сервер (например, Nginx) на обслуживание файлов из этой папки.
 '''
-STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+# этот путь более подходит для локального развертывания Django
+# STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+# этот путь для оттдачи статики через nginx
+STATIC_ROOT = '/app/staticfiles/'
 logger.info(f"STATICROOT is set to: {STATIC_ROOT}")
 
 '''
@@ -146,11 +149,9 @@ logger.info(f"STATICROOT is set to: {STATIC_ROOT}")
 Это полезно для статических файлов, которые не относятся непосредственно к приложениям Django.
 '''
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
-# STATICFILES_DIRS = ["static"]
-
 logger.info(f"STATICFILES is set to: {STATICFILES_DIRS}")
 # INFO:config.settings:STATICFILES is set to: ['/app/static']
+# STATICFILES_DIRS = ["static"]
 
 # Default primary key field type
 
@@ -185,20 +186,30 @@ LOGGING = {
             'formatter': 'default',
             'filters': ['require_debug_true'],
         },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/app/log/django.log',
+            'formatter': 'default',
+        },
     },
     'loggers': {
         'django.db.backends': {
             'level': 'DEBUG',
             'handlers': ['debug-console'],
             'propagate': False,
-        }
+        },
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     },
 }
 
 # INTERNAL_IPS = [
 #     "127.0.0.1",
 # ]
-
 
 
 if DEBUG:
