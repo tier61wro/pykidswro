@@ -44,6 +44,7 @@ services:
     depends_on:
       - pykids_web
     ports:
+      - "80:80"
       - "8000:80"
 
 volumes:
