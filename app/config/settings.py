@@ -35,7 +35,9 @@ DEBUG = True
 #     ALLOWED_HOSTS = []
 # allowed_hosts = ['127.0.0.1', '172.23.0.4']
 # ALLOWED_HOSTS = allowed_hosts.split(',')
-ALLOWED_HOSTS = ['127.0.0.1', '172.23.0.4', '172.23.0.3', '31.187.64.163']
+# ALLOWED_HOSTS = ['127.0.0.1', '172.23.0.4', '172.23.0.3', '31.187.64.163']
+ALLOWED_HOSTS = ['pykids.pl', 'www.pykids.pl', '31.187.64.163', 'localhost', '127.0.0.1', '[::1]']
+
 
 # Application definition
 
