@@ -41,6 +41,8 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
       - pykids_static_volume:/app/staticfiles
       - /var/log/pykids_logs/nginx_logs:/var/log/nginx
+      - /etc/ssl/private:/etc/ssl/private
+      - /etc/ssl/certs:/etc/ssl/certs
     depends_on:
       - pykids_web
     ports:
