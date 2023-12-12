@@ -42,7 +42,7 @@ services:
       - pykids_static_volume:/app/staticfiles
       - /var/log/pykids_logs/nginx_logs:/var/log/nginx
       - /etc/ssl/private:/etc/ssl/private
-      - /etc/ssl/certs:/etc/ssl/certs
+      - /etc/ssl/crt:/etc/ssl/crt
     depends_on:
       - pykids_web
     ports:
