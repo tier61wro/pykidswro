@@ -1,8 +1,0 @@
-FROM alpine:latest
-RUN apk --no-cache add curl && apk --no-cache add busybox-extras
-
-
-RUN mkdir /home_dir
-RUN echo "11111" > /home_dir/ex1
-
-CMD ["sleep", "infinity"]
