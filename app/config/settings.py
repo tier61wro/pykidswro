@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'main.apps.MainConfig',
     'diary.apps.DiaryConfig',
+    'lessons.apps.LessonsConfig',
     'django_extensions',
 ]
 
@@ -141,6 +142,7 @@ STATIC_URL = '/static/'
 '''
 # этот путь более подходит для локального развертывания Django
 # STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+
 # этот путь для оттдачи статики через nginx
 STATIC_ROOT = '/app/staticfiles/'
 logger.info(f"STATICROOT is set to: {STATIC_ROOT}")
@@ -168,7 +170,8 @@ include(
 LOCALE_PATHS = ['movies/locale']
 PORT = 8000
 
-
+DJANGO_LOG_FILE = os.path.join(BASE_DIR, 'log', 'django.log')
+logger.info(f"DJANGO_LOGS_PATH is set to: {DJANGO_LOG_FILE}")
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
@@ -191,7 +194,8 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/app/log/django.log',
+            # 'filename': '/app/log/django.log',
+            'filename': DJANGO_LOG_FILE,
             'formatter': 'default',
         },
     },
