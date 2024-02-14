@@ -3,26 +3,46 @@
 {% load static %}
 
 {% block content %}
-    <section id="about" class="about">
-        <div class="container mt-5">
-            <div class="row">
-                <!-- Колонка для изображения -->
-                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                    <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid" alt="Описание изображения">
-                </div>
-                <!-- Колонка для текста -->
-                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                    <h3>План курса</h3>
-                    <ul>
-                        <li><i class="bi bi-check-circle"></i> Учим программировать.</li>
-                        <li><i class="bi bi-check-circle"></i> Развиваем навык осознанности и самостоятельной работы</li>
-                        <li><i class="bi bi-check-circle"></i> Формируем полезные привычки</li>
-                    </ul>
-                    <p>
-                        Присоединяйтесь к нам и дайте вашему ребенку возможность стать частью цифрового будущего!
-                    </p>
-                </div>
+<section id="about" class="about">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Колонка для изображения -->
+            <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                <img src="{% static 'assets/img/about.jpg' %}" class="img-fluid" alt="Zdjęcie kursu">
+            </div>
+            <!-- Колonka для tekstu -->
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                <h3>Plan kursu</h3>
+                <p class="fst-italic">
+                    Odkryj dla swojego dziecka świat programowania z naszym kursem, który obejmuje:
+                </p>
+                <h4>Podstawy Pythona:</h4>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 0: Ustawienia podstawowe - Wprowadzenie do Pythona, korzystanie z Replit.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 1: Podstawowe zmienne - Typy danych, operacje na zmiennych.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 2: Konwersja typów i wprowadzanie danych.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 3: Operacje na danych - Operacje arytmetyczne i logiczne.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 4: Instrukcje warunkowe.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 5: Listy - Podstawowe operacje na listach.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 6: Pętle.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 7: Listy i tuple.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 8: Funkcje.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 9: Słowniki.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 10: Programowanie obiektowe (OOP).</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 11: Programowanie obiektowe (OOP) - część 2.</li>
+                </ul>
+                <h4>Pygame:</h4>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 13: Podstawy Pygame - Tworzenie okna gry, obsługa zdarzeń.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 14: Grafika i animacje.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 15: Zarządzanie sprite'ami.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 16: Dźwięk i muzyka.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 17: Wynik i interfejs użytkownika.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 18: Tworzenie poziomów gry.</li>
+                    <li><i class="bi bi-check-circle"></i> Lekcja 19: Tworzenie pełnej gry.</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
