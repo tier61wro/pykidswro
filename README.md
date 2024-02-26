@@ -7,3 +7,5 @@
 - Если ругается на таблицы `docker-compose exec pykids_web python manage.py migrate --fake movies`
 - Создаем пользователя: `docker-compose exec pykids_web python manage.py createsuperuser`
 - Открываем браузер [панель администратора] (http://127.0.0.1/admin/)
+
+DEPLOY:
