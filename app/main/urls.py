@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import IndexView, ContactView,  CourseView
+
+from .views import ContactView, CourseView, IndexView
+
 # AboutView,
 
 app_name = 'main'

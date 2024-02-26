@@ -1,9 +1,10 @@
 from datetime import datetime
 
 from django import forms
-from django.forms.widgets import DateInput
-from .models import DiaryEntry
 from django.conf import settings
+from django.forms.widgets import DateInput
+
+from .models import DiaryEntry
 
 
 class DiaryEntryForm(forms.ModelForm):
@@ -39,5 +40,3 @@ class DiaryEntryForm(forms.ModelForm):
         if study_hours < 0:
             raise forms.ValidationError('Время не может быть отрицательным')
         return study_hours
-
-

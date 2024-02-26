@@ -1,9 +1,8 @@
 """config URL Configuration for the project
 """
 from django.contrib import admin
-from django.urls import include, path
 from django.contrib.auth import views as auth_views
-from django.urls import include
+from django.urls import include, path
 from main.views import ProfileView
 
 urlpatterns = [

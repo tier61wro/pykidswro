@@ -1,24 +1,12 @@
-from dateutil import parser
-from datetime import date
-
-from django.shortcuts import render
-from .forms import DiaryEntryForm
-
-from django.views.generic import TemplateView
 from datetime import date, timedelta
 
-from django.shortcuts import render, redirect
-from .forms import DiaryEntryForm
+from dateutil import parser
+from django.shortcuts import redirect, render
+from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 
+from .forms import DiaryEntryForm
 
-class DiaryEntryView(FormView):
-    template_name = 'diary_entry.html'
-    form_class = DiaryEntryForm
-    success_url = '/diary/entry/success/'
-
-
-from datetime import date
 
 class DiaryEntryView(FormView):
     template_name = 'diary_entry.html'

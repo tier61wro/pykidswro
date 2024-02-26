@@ -1,13 +1,13 @@
 """
 Django settings for project.
 """
+import logging
 import os
 from pathlib import Path
 
 from dotenv import load_dotenv
 from split_settings.tools import include
 
-import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 

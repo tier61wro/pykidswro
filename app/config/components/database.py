@@ -1,6 +1,6 @@
 import os
 
-from config.settings import BASE_DIR
+# from config.settings import BASE_DIR
 
 # local DB
 # DATABASES = {
