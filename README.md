@@ -8,4 +8,5 @@
 - Создаем пользователя: `docker-compose exec pykids_web python manage.py createsuperuser`
 - Открываем браузер [панель администратора] (http://127.0.0.1/admin/)
 
-DEPLOY:
+DEPLOY order:
+

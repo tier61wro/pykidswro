@@ -14,6 +14,7 @@ class Lesson(models.Model):
     def __str__(self):
         return self.title
 
+
 class UserLessonProgress(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
