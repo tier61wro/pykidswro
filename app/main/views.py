@@ -7,8 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class IndexView(TemplateView):
     template_name = 'index.html'
 
-
-class CourseView(LoginRequiredMixin, TemplateView):
+# LoginRequiredMixin - if we need authorization
+class CourseView(TemplateView):
     template_name = 'course.html'
 
 

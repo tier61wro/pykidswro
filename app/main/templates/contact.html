@@ -3,20 +3,33 @@
 {% load static %}
 
 {% block content %}
+<style>
+  .map-iframe {
+    margin: 20px auto; /* Увеличенный отступ сверху и снизу */
+    padding: 0 20px; /* Увеличенные боковые отступы */
+    display: block;
+    width: 75%;
+    height: 350px; /* Высоту можно настроить по желанию */
+    border: none; /* Убираем рамку, если она есть */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Опционально добавляем тень для визуального выделения */
+  }
+</style>
+
+
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
         <h2>Contact Us</h2>
-        <p> Чтобы оставить заявку на обучение, напишите email на адрес: info@pykids.pl</p>
+        <p> Aby złożyć wniosek o szkolenie, napisz e-mail na adres: info@pykids.pl</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div data-aos="fade-up">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30492.153101792777!2d17.0301476947595!3d51.101744282572746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2spl!4v1697110153561!5m2!1sru!2spl" frameborder="0" allowfullscreen></iframe>
+          <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d30492.153101792777!2d17.0301476947595!3d51.101744282572746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2spl!4v1697110153561!5m2!1sru!2spl" frameborder="0" allowfullscreen></iframe>
       </div>
 
       <div class="container" data-aos="fade-up">
