@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY'),
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', False) == 'True'
-DEBUG = True
+DEBUG = False
 
 
 # allowed_hosts = os.getenv('ALLOWED_HOSTS')
@@ -126,7 +126,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 # STATIC_ROOT = '/app/staticfiles/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "../static")]
 
 '''
 URL, по которому будут доступны статические файлы (например, CSS, JavaScript, изображения)
@@ -140,22 +139,30 @@ STATIC_URL = '/static/'
 из всех приложений при выполнении команды `collectstatic`.
 Настройте ваш веб-сервер (например, Nginx) на обслуживание файлов из этой папки.
 '''
-# этот путь более подходит для локального развертывания Django
-# STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
 
-# этот путь для оттдачи статики через nginx
-STATIC_ROOT = '/app/staticfiles/'
-logger.info(f"STATICROOT is set to: {STATIC_ROOT}")
+# LOCAL_RUNSERVER
+# этот путь более подходит для локального развертывания Django
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+
+# этот путь для отдачи статики через nginx
+# STATIC_ROOT = '/app/staticfiles/'
+
+logger.info(f"STATIC_ROOT is set to: {STATIC_ROOT}")
 
 '''
 Список дополнительных местоположений файловой системы, где Django будет искать статические файлы,
 помимо стандартной папки static каждого приложения.
 Это полезно для статических файлов, которые не относятся непосредственно к приложениям Django.
 '''
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-logger.info(f"STATICFILES is set to: {STATICFILES_DIRS}")
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 # INFO:config.settings:STATICFILES is set to: ['/app/static']
-# STATICFILES_DIRS = ["static"]
+
+# LOCAL_RUNSERVER
+# STATICFILES_DIRS = ['static', './static', './static/']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '..', 'static'),]
+
+logger.info(f"STATICFILES_DIRS is set to: {STATICFILES_DIRS}")
+
 
 # Default primary key field type
 
@@ -192,7 +199,8 @@ LOGGING = {
             'filters': ['require_debug_true'],
         },
         'file': {
-            'level': 'DEBUG',
+            # 'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             # 'filename': '/app/log/django.log',
             'filename': DJANGO_LOG_FILE,
@@ -207,7 +215,8 @@ LOGGING = {
         },
         'django': {
             'handlers': ['file'],
-            'level': 'DEBUG',
+            # 'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
     },
@@ -217,6 +226,8 @@ LOGGING = {
 #     "127.0.0.1",
 # ]
 
+DEBUG = True
+logger.info(f"DEBUG is set to: {DEBUG}")
 
 if DEBUG:
     import socket  # only if you haven't already imported this

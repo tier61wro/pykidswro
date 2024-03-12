@@ -16,8 +16,18 @@
                 <h4>Podstawy Pythona:</h4>
                 <ul>
                     <li><i class="bi bi-check-circle"></i> Lekcja 0: Ustawienia podstawowe - Wprowadzenie do Pythona, korzystanie z Replit.</li>
-                    <li><i class="bi bi-check-circle"></i> Lekcja 1: Podstawowe zmienne - Typy danych, operacje na zmiennych.</li>
-                    <li><i class="bi bi-check-circle"></i> Lekcja 2: Konwersja typów i wprowadzanie danych.</li>
+
+                    <li>
+                        <a href="{% url 'lesson-detail' lesson_order=1 %}">
+                            <i class="bi bi-check-circle"></i> Lekcja 1: Podstawowe zmienne - Typy danych, operacje na zmiennych.
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'lesson-detail' lesson_order=2 %}">
+                            <i class="bi bi-check-circle"></i> Lekcja 2: Konwersja typów i wprowadzanie danych.
+                        </a>
+                    </li>
                     <li><i class="bi bi-check-circle"></i> Lekcja 3: Operacje na danych - Operacje arytmetyczne i logiczne.</li>
                     <li><i class="bi bi-check-circle"></i> Lekcja 4: Instrukcje warunkowe.</li>
                     <li><i class="bi bi-check-circle"></i> Lekcja 5: Listy - Podstawowe operacje na listach.</li>

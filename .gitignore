@@ -31,4 +31,5 @@ env.bak/
 pythonvenv/
 myvenv/
 
-
+# static
+collected_static/
