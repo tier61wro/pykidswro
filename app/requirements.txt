@@ -20,3 +20,5 @@ django-debug-toolbar
 bootstrap4
 django-bootstrap4
 python-dateutil
+markdown
+Pygments

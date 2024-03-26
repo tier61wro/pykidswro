@@ -1,14 +1,23 @@
 {% extends "base.html" %}
-
+{% load lesson_extras %}
 {% load static %}
 
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/pygments.css' %}">
+{% endblock %}
+
+
 {% block content %}
-    <section id="lesson" class="lesson">
+    <style>
+        .codehilite {
+            max-width: 60%;
+        }
+    </style>
+    <section id="about" class="about">
         <div class="container mt-5">
-            <p>Python is great2</p>
             <h1>{{ lesson.title }}</h1>
             <div class="lesson-content">
-                {{ lesson.content | safe }}
+                {{ lesson.content|render_markdown }}
             </div>
             {% if next_lesson %}
                 <a href="{% url 'lesson-detail' lesson_order=next_lesson.order %}" class="next-lesson-link">Następna lekcja</a>
@@ -16,4 +25,3 @@
         </div>
     </section>
 {% endblock %}
-

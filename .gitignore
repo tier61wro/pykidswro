@@ -33,3 +33,6 @@ myvenv/
 
 # static
 collected_static/
+
+# logs
+*.log

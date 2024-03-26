@@ -109,7 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'ru-RU'
+# LANGUAGE_CODE = 'ru-RU'
+LANGUAGE_CODE = 'pl'
+
 
 TIME_ZONE = 'UTC'
 
@@ -155,11 +157,9 @@ logger.info(f"STATIC_ROOT is set to: {STATIC_ROOT}")
 Это полезно для статических файлов, которые не относятся непосредственно к приложениям Django.
 '''
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-# INFO:config.settings:STATICFILES is set to: ['/app/static']
 
 # LOCAL_RUNSERVER
-# STATICFILES_DIRS = ['static', './static', './static/']
-STATICFILES_DIRS = [os.path.join(BASE_DIR, '..', 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '..', 'static'), ]
 
 logger.info(f"STATICFILES_DIRS is set to: {STATICFILES_DIRS}")
 

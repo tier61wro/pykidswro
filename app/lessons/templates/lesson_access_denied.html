@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section id="lesson" class="lesson">
+        <div class="container mt-5">
+            <h1>Dostęp zabroniony</h1>
+            <div class="lesson-content">
+                <p>Wygląda na to, że próbujesz uzyskać dostęp do lekcji, która nie jest jeszcze dla Ciebie dostępna. Upewnij się, że zakończyłeś wszystkie poprzednie lekcje.</p>
+            </div>
+            <a href="{% url 'main:course' %}" class="back-link">Powrót do listy</a>
+        </div>
+    </section>
+{% endblock %}

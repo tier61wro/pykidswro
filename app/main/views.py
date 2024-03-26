@@ -3,14 +3,33 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 
+from lessons.models import Lesson
+
 
 class IndexView(TemplateView):
     template_name = 'index.html'
 
 
-# LoginRequiredMixin - if we need authorization
 class CourseView(TemplateView):
     template_name = 'course.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Получаем все уроки, сортированные по главам и порядку уроков внутри глав
+        lessons = Lesson.objects.all().order_by('chapter', 'chapter_order')
+
+        # Группируем уроки по главам
+        chapters = {}
+        for lesson in lessons:
+            if lesson.chapter in chapters:
+                chapters[lesson.chapter].append(lesson)
+            else:
+                chapters[lesson.chapter] = [lesson]
+
+
+        context['chapters'] = chapters
+        return context
 
 
 class ContactView(TemplateView):
@@ -22,3 +41,7 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'user': request.user})
+
+
+class SiteErrorView(TemplateView):
+    template_name = 'site_error.html'

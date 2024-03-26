@@ -1,17 +1,15 @@
 import os
 
-
-
-
-
 # LOCAL_RUNSERVER
 from config.settings import BASE_DIR
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / "db.sqlite3",
     }
 }
+
 
 # postgres docker or local
 # DATABASES = {
