@@ -15139,3 +15139,7 @@ django.db.utils.OperationalError: no such table: lessons_chapter
 2024-03-26 13:23:23,443 INFO: "GET /contact/ HTTP/1.1" 200 18293 [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/core/servers/basehttp.py:212]
 2024-03-26 13:24:48,094 INFO: "GET /index/ HTTP/1.1" 200 16585 [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/core/servers/basehttp.py:212]
 2024-03-26 13:24:50,730 INFO: "GET /course/ HTTP/1.1" 200 17125 [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/core/servers/basehttp.py:212]
+2024-03-26 13:28:26,611 INFO: /home/tier/github/pykidswro/app/config/urls.py changed, reloading. [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/utils/autoreload.py:266]
+2024-03-26 13:28:27,022 INFO: Watching for file changes with StatReloader [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/utils/autoreload.py:668]
+2024-03-26 13:28:41,446 INFO: /home/tier/github/pykidswro/app/lessons/admin.py changed, reloading. [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/utils/autoreload.py:266]
+2024-03-26 13:28:41,805 INFO: Watching for file changes with StatReloader [in /home/tier/github/pykidswro/venv/lib/python3.9/site-packages/django/utils/autoreload.py:668]
