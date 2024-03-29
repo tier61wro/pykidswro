@@ -11,11 +11,12 @@
     <style>
         .codehilite {
             max-width: 60%;
+            padding: 10px;
         }
     </style>
     <section id="about" class="about">
         <div class="container mt-5">
-            <h1>{{ lesson.title }}</h1>
+            <h1>Lekcja {{ lesson.order }}. {{ lesson.title }}</h1>
             <div class="lesson-content">
                 {{ lesson.content|render_markdown }}
             </div>

@@ -22,3 +22,4 @@ django-bootstrap4
 python-dateutil
 markdown
 Pygments
+requests
