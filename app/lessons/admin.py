@@ -25,7 +25,7 @@ class UserLessonProgressAdmin(admin.ModelAdmin):
     def lesson_number(self, obj):
         return obj.lesson.order
 
-    lesson_number.short_description = 'Lesson Number'
+    lesson_number.short_description = 'Lesson Number'  # type: ignore[attr-defined]
 
 
 admin.site.register(UserLessonProgress, UserLessonProgressAdmin)

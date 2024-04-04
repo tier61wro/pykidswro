@@ -1,7 +1,6 @@
-import requests
 import os
 
-
+import requests
 
 GITHUB_NAME = "tier61wro"
 REPO_NAME = "pykids_theory"
@@ -9,12 +8,13 @@ BRANCH = "master"
 LANG_PATH = "pl"  # Путь в репозитории
 
 # Папка для сохранения изображений
-IMAGES_DIR = f"/home/tier/github/pykidswro/static/article_images/{LANG_PATH}" 
+IMAGES_DIR = f"/home/tier/github/pykidswro/static/article_images/{LANG_PATH}"
 
 
 # Создание папки, если она не существует
 if not os.path.exists(IMAGES_DIR):
     os.makedirs(IMAGES_DIR)
+
 
 # Функция для скачивания изображений
 def download_images():
@@ -41,6 +41,7 @@ def download_images():
                     print(f"Ошибка загрузки изображения: {filename}")
     else:
         print("Не удалось получить данные от GitHub API")
+
 
 # Вызов функции
 download_images()

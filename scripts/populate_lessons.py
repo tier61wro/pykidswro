@@ -36,6 +36,7 @@ def replace_markdown_tags(text):
         text = regex.sub(replacement, text)
     return text
 
+
 def replace_image_path(text):
     # Шаблон поиска путей к картинкам
     pattern = 'images/'
