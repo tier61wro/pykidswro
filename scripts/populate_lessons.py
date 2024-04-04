@@ -20,10 +20,10 @@ django.setup()
 from lessons.models import Chapter, Lesson
 
 # Устанавливаем базовый URL для API запроса
-REPO_NAME = "tier61wro/pykids_theory"
+GITHUB_NAME = "tier61wro"
+REPO_NAME = "pykids_theory"
 BRANCH = "master"
-PATH = "pl"  # Путь в репозитории
-api_url = f"https://api.github.com/repos/{REPO_NAME}/contents/{PATH}?ref={BRANCH}"
+LANG_PATH = "pl"  # Путь в репозитории
 
 
 def replace_markdown_tags(text):
@@ -35,6 +35,17 @@ def replace_markdown_tags(text):
     for regex, replacement in REPLACEMENTS.items():
         text = regex.sub(replacement, text)
     return text
+
+def replace_image_path(text):
+    # Шаблон поиска путей к картинкам
+    pattern = 'images/'
+    # Шаблон замены без лишних символов экранирования
+    replacement = '/static/article_images/pl/'
+
+    # Применяем замену в тексте
+    text = re.sub(pattern, replacement, text)
+    return text
+
 
 
 def extract_number_from_filename(filename):
@@ -48,7 +59,7 @@ def extract_number_from_filename(filename):
 
 
 def get_file_content(filename):
-    raw_url = "https://raw.githubusercontent.com/tier61wro/pykids_theory/master/pl/"
+    raw_url = f"https://raw.githubusercontent.com/{GITHUB_NAME}/{REPO_NAME}/{BRANCH}/{LANG_PATH}/"
     url = f"{raw_url}{filename}"
 
     response = requests.get(url)
@@ -75,6 +86,7 @@ def get_lesson_title(content):
 
 
 if __name__ == "__main__":
+    api_url = f"https://api.github.com/repos/{GITHUB_NAME}/{REPO_NAME}/contents/{LANG_PATH}?ref={BRANCH}"
     # Делаем запрос к GitHub API
     response = requests.get(api_url)
     Lesson.objects.all().delete()
@@ -95,6 +107,7 @@ if __name__ == "__main__":
                 chapter_order = lesson_order
                 lesson_title, lesson_content = get_lesson_title(file_content)
                 lesson_content = replace_markdown_tags(lesson_content)
+                lesson_content = replace_image_path(lesson_content)
                 if not lesson_title:
                     print(f"ERROR: can't find title for lesson {lesson_file_name}, check content")
 
@@ -105,6 +118,7 @@ if __name__ == "__main__":
                     title=lesson_title,
                     content=lesson_content
                 )
+                # break
 
     else:
         print("Не удалось получить данные от GitHub API")

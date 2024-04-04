@@ -19,9 +19,13 @@ class LessonAdmin(admin.ModelAdmin):
 admin.site.register(Lesson, LessonAdmin)
 
 
-
 class UserLessonProgressAdmin(admin.ModelAdmin):
-    list_display = ('user', 'lesson', 'completed')
+    list_display = ('user', 'lesson_number', 'lesson', 'completed')
+
+    def lesson_number(self, obj):
+        return obj.lesson.order
+
+    lesson_number.short_description = 'Lesson Number'
 
 
 admin.site.register(UserLessonProgress, UserLessonProgressAdmin)

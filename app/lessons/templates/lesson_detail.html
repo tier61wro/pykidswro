@@ -8,21 +8,30 @@
 
 
 {% block content %}
-    <style>
-        .codehilite {
-            max-width: 60%;
-            padding: 10px;
-        }
-    </style>
+<style>
+    div.codehilite > pre {
+        padding: 10px; /* Отступ со всех сторон */
+        border-radius: 4px; /* Скругление углов */
+        max-width: 60%;
+        overflow: auto; /* Добавляет полосу прокрутки, если контент не помещается */
+    }
+
+    .content-container {
+        max-width: 60%;
+        margin: auto;
+    }
+</style>
     <section id="about" class="about">
         <div class="container mt-5">
-            <h1>Lekcja {{ lesson.order }}. {{ lesson.title }}</h1>
-            <div class="lesson-content">
-                {{ lesson.content|render_markdown }}
+            <div class="content-container">
+                <h1>Lekcja {{ lesson.order }}. {{ lesson.title }}</h1>
+                <div class="lesson-content">
+                    {{ lesson.content|render_markdown }}
+                </div>
+                {% if next_lesson %}
+                    <a href="{% url 'lesson-detail' lesson_order=next_lesson.order %}" class="next-lesson-link">Następna lekcja</a>
+                {% endif %}
             </div>
-            {% if next_lesson %}
-                <a href="{% url 'lesson-detail' lesson_order=next_lesson.order %}" class="next-lesson-link">Następna lekcja</a>
-            {% endif %}
         </div>
     </section>
 {% endblock %}
