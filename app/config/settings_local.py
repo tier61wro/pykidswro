@@ -24,6 +24,8 @@ logger.info(f"{deploy_env=}")
 # for key in sorted(os.environ):
 #     logger.info(f"{key}: {os.environ[key]}")
 
+DB_USER = os.environ.get('DB_USER')
+logger.info(f"DB_USER = {DB_USER}")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 logger.info(f"BASE_DIR is set to: {BASE_DIR}")  # /home/tier/github/pykidswro/app
@@ -34,19 +36,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY'),
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', False) == 'True'
-
-
-if deploy_env == 'docker':
-    DEBUG = False
 DEBUG = True
-
 logger.info(f"DEBUG is set to: {DEBUG}")
 
 
 # allowed_hosts = os.getenv('ALLOWED_HOSTS')
 ALLOWED_HOSTS = ['pykids.pl', 'www.pykids.pl', '31.187.64.163', 'localhost', '127.0.0.1', '[::1]']
 
-CSRF_TRUSTED_ORIGINS = ['https://pykids.pl']
 
 # Application definition
 INSTALLED_APPS = [
@@ -93,8 +89,8 @@ TEMPLATES = [
     },
 ]
 
-logger.info(f"TEMPLATES is set to: {TEMPLATES}")
 
+logger.info(f"TEMPLATES is set to: {TEMPLATES}")
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Password validation
@@ -131,7 +127,6 @@ DATE_INPUT_FORMATS = ['%d/%m/%Y']
 
 USE_TZ = True
 
-# Variables that depend on DEPLOY_ENVIRONMENT
 
 '''
 STATIC_URL - url по которому будут доступны статические файлы
@@ -149,24 +144,27 @@ STATIC_ROOT - абсолютный путь к директории, куда б
 Настройте ваш веб-сервер (например, Nginx) на обслуживание файлов из этой папки.
 '''
 
-# Определение STATIC_ROOT в зависимости от переменной окружения
-if deploy_env == 'docker':
-    STATIC_ROOT = '/app/staticfiles/'
-else:  # Для 'local' и всех остальных случаев
-    STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+# STATIC_ROOT: после запуска  collectstatic django берет статику из STATICFILES_DIRS и кладет их в STATIC_ROOT
+
+# LOCAL_RUNSERVER
+# этот путь более подходит для локального развертывания Django
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
+
+# этот путь для отдачи статики через nginx
+# STATIC_ROOT = '/app/staticfiles/'
 
 logger.info(f"STATIC_ROOT is set to: {STATIC_ROOT}")
 
 '''
-STATICFILES_DIRS - Список дополнительных мест, где Django будет искать статические файлы,
-кроме папки static каждого приложения.
+Список дополнительных мест, где Django будет искать статические файлы, кроме папки static каждого приложения.
 Это полезно для статических файлов, которые не относятся непосредственно к приложениям Django.
 '''
-if deploy_env == 'docker':
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-else:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, '..', 'static'), ]
 
+# LOCAL_RUNSERVER
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '..', 'static'), ]
+
+# DOCKER_RUNSERVER
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 logger.info(f"STATICFILES_DIRS is set to: {STATICFILES_DIRS}")
 
