@@ -17,14 +17,23 @@
     }
 
     .content-container {
-        max-width: 60%;
+        max-width: 70%;
         margin: auto;
     }
+
+  .lesson-title {
+    font-weight: bold; /* Жирный шрифт для заголовка */
+    margin-bottom: 10px; /* Отступ снизу для разделения */
+  }
+
+
+
 </style>
     <section id="about" class="about">
         <div class="container mt-5">
             <div class="content-container">
-                <h1>Lekcja {{ lesson.order }}. {{ lesson.title }}</h1>
+                <h2 class="lesson-title">Lekcja {{ lesson.order }}. {{ lesson.title }}</h2>
+                <hr>
                 <div class="lesson-content">
                     {{ lesson.content|render_markdown }}
                 </div>
